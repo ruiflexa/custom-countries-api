@@ -22,7 +22,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "GRAPHCOUNTRIES_USERNAME": "neo4j",
+        "GRAPHCOUNTRIES_BASEURL": "http://localhost:8080",
+        "GRAPHCOUNTRIES_PASSWORD": "P@ssw0rd"
       },
       "applicationUrl": "http://localhost:5000;https://localhost:5001"
     },

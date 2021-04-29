@@ -1,15 +1,11 @@
 ﻿using GraphQL;
 using GraphQL.Client.Abstractions;
 using JsonFlatFileDataStore;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Softplan.CustomCountries.Domain.Entities;
 using Softplan.CustomCountries.Domain.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Softplan.CustomCountries.Infra.Data.Repository
@@ -124,7 +120,7 @@ namespace Softplan.CustomCountries.Infra.Data.Repository
 
             if (!string.IsNullOrWhiteSpace(name))
                 return response.Data.Country.Where(FilterNameExpression(name)).ToList();
-                       
+
             return response.Data.Country.ToList();
         }
 

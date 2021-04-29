@@ -15,7 +15,7 @@ namespace Softplan.CustomCountries.API.Configuration
             {
                 options.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "Custom Countries API",
+                    Title = "Softplan Countries API",
                     Version = "v1",
                     Contact = new OpenApiContact()
                     {
@@ -26,6 +26,29 @@ namespace Softplan.CustomCountries.API.Configuration
                     {
                         Name = "Softplan",
                         Url = new Uri(configuration.GetSection("SoftplanUrl").Value)
+                    }
+                });
+                options.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    In = ParameterLocation.Header,
+                    Description = "Basic Authorization Header usando Bearer Scheme."
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "basic"
+                            }
+                        },
+                        new string[] {}
                     }
                 });
             });

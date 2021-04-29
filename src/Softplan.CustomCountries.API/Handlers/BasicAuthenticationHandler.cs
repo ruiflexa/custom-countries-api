@@ -17,7 +17,11 @@ namespace Softplan.CustomCountries.API.Handlers
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         private readonly IUserService _userService;
-        public BasicAuthenticationHandler(OptionsMonitor<AuthenticationSchemeOptions> options,
+        private bool Challenge { get; set; } = false;
+
+
+        public BasicAuthenticationHandler(
+            IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
@@ -27,49 +31,56 @@ namespace Softplan.CustomCountries.API.Handlers
             _userService = userService;
         }
 
+        protected override Task HandleChallengeAsync(AuthenticationProperties properties)
+        {
+            if (Challenge)
+            {
+                Response.Headers.Add("WWW-Authenticate", "Basic realm=\"localhost\", charset=\"UTF-8\"");
+                Response.StatusCode = 401;
+            }
+
+            return Task.CompletedTask;
+        }
+
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            var endpoint = Context.GetEndpoint();
-            if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() != null || Request.Path.Value.Contains("login"))
-                return AuthenticateResult.NoResult();
-
             if (!Request.Headers.ContainsKey("Authorization"))
-                return AuthenticateResult.Fail("Authorization Header ausente");
+            {
+                Challenge = true;
+                return AuthenticateResult.Fail("Missing Authorization Header");
+            }
 
             User user;
             try
             {
-                var authorizationHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
-                var credentialBytes = Convert.FromBase64String(authorizationHeader.Parameter);
-                var credentials = Encoding.UTF8.GetString(credentialBytes).Split(new char[] { ':' }, 2);
-                var userName = credentials[0];
+                var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
+                var credentialBytes = Convert.FromBase64String(authHeader.Parameter);
+                var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
+                var username = credentials[0];
                 var password = credentials[1];
-                user = await _userService.Authenticate(userName, password);
+                user = await _userService.Authenticate(username, password);
             }
             catch
             {
-                return AuthenticateResult.Fail("Authorization Header inválido");
+                Challenge = true;
+                return AuthenticateResult.Fail("Invalid Authorization Header");
             }
 
             if (user == null)
-                return AuthenticateResult.Fail("Usuário/Senha inválidos");
+            {
+                Challenge = true;
+                return AuthenticateResult.Fail("Invalid Username or Password");
+            }
+
 
             var claims = new[] {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName),
             };
-
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
             return AuthenticateResult.Success(ticket);
-        }
-
-        protected override Task HandleChallengeAsync(AuthenticationProperties properties)
-        {
-            Response.Headers.Add("WWW-Authenticate", "Basic");
-            return base.HandleChallengeAsync(properties);
         }
     }
 }

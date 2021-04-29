@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,8 +8,11 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Softplan.CustomCountries.API.Configuration;
 using Softplan.CustomCountries.API.Handlers;
+using System;
+using System.Text;
 
 namespace Softplan.CustomCountries.API
 {
@@ -36,7 +40,9 @@ namespace Softplan.CustomCountries.API
             }).SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             services.AddAuthentication("BasicAuthentication")
-                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+
             services.AddCors();
             services.AddControllers();
         }

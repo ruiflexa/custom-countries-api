@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Softplan.CustomCountries.Domain.Entities;
 using Softplan.CustomCountries.Domain.Interfaces.Services;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Softplan.CustomCountries.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     [ApiController]
     [Route("api/countries")]
     public class CountriesController : ControllerBase
@@ -19,6 +23,10 @@ namespace Softplan.CustomCountries.API.Controllers
         public async Task<IActionResult> GetCountries([FromQuery] string name)
         {
             var countries = await _countryService.GetCountries(name);
+
+            if (countries.Count == 0)
+                return NoContent();
+
             return Ok(countries);
         }
 
@@ -34,7 +42,7 @@ namespace Softplan.CustomCountries.API.Controllers
         [Route("custom/{id}")]
         public IActionResult GetByCustomCountryId(long id)
         {
-            var country =  _countryService.GetByCustomCountryId(id);
+            var country = _countryService.GetByCustomCountryId(id);
             return Ok(country);
         }
 

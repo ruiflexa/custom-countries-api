@@ -32,7 +32,7 @@
 
         [JsonProperty("population")]
         public long Population { get; set; }
-        
+
         [JsonProperty("populationDensity")]
         public decimal? PopulationDensity { get; set; }
 
@@ -41,7 +41,7 @@
 
         [JsonProperty("topLevelDomains")]
         public List<TopLevelDomain> TopLevelDomains { get; set; }
-        
+
         [JsonProperty("isCustomInformation")]
         public bool IsCustomInformation { get; set; }
     }

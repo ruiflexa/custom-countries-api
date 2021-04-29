@@ -31,8 +31,4 @@
     <ProjectReference Include="..\..\src\Softplan.CustomCountries.API\Softplan.CustomCountries.API.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IntegrationTests\Scenarios\Builders\" />
-  </ItemGroup>
-
 </Project>
