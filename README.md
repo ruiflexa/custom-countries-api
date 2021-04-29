@@ -10,11 +10,11 @@ A solução da API baseia-se em projetos .NET Core 3.1, tendo sua arquitetura de
 
 Segue abaixo a lista dos principais pacotes/plugins que a API utiliza, todos instalados via NuGet:
 
-Swagger - Responsável pela documentação online de uso e versionamento da API;
-GraphQL.Client - Client para realizar conexão com o GraphQL
-JsonFlatDataStore - Utilizado para manipulação de dados em arquivos json
-xUnit, AspNetCore.TestHost e FluentAssertions - Pacotes utilizados nos testes de integraçao
-Dockerfile - Arquivo para preparar a imagem caso queira subir a API em Docker
+- Swagger - Responsável pela documentação online de uso e versionamento da API;
+- GraphQL.Client - Client para realizar conexão com o GraphQL
+- JsonFlatDataStore - Utilizado para manipulação de dados em arquivos json
+- xUnit, AspNetCore.TestHost e FluentAssertions - Pacotes utilizados nos testes de integraçao
+- Dockerfile - Arquivo para preparar a imagem caso queira subir a API em Docker
 
 # Orientações para subir a aplicação
 Seguir orientações contidas no repositório da API Graph Countries (https://github.com/lennertVanSever/graphcountries) para rodar a API localmente
