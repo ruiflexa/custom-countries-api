@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Softplan.CustomCountries.Domain.Entities;
 using Softplan.CustomCountries.Domain.Interfaces.Services;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace Softplan.CustomCountries.API.Controllers

@@ -4,11 +4,6 @@ using Softplan.CustomCountries.Domain.Interfaces.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using System;
-using System.Text;
 
 namespace Softplan.CustomCountries.Domain.Services
 {
@@ -28,7 +23,7 @@ namespace Softplan.CustomCountries.Domain.Services
 
         public async Task<User> Authenticate(string username, string password)
         {
-            var user = await Task.Run(() => _users.FirstOrDefault(x => x.UserName == username && x.Password == password));            
+            var user = await Task.Run(() => _users.FirstOrDefault(x => x.UserName == username && x.Password == password));
 
             if (user == null)
                 return null;
