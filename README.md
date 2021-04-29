@@ -1,5 +1,5 @@
 # Countries API
-Desafio Técnico - Countries API
+Custom Countries - Desafio Técnico .NET
 
 # Acesso e Autenticação
 A API utiliza autenticação Basic e contém um usuário pré-existente (usuário: teste, senha: test) 
