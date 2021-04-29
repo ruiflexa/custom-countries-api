@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -34,7 +35,14 @@ namespace Softplan.CustomCountries.API
                                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             }).SetCompatibilityVersion(CompatibilityVersion.Latest);
-
+            
+            services.AddAutoMapper(x =>
+            {
+                x.AddProfile(new DomainToViewModelMappingProfile());
+                x.AddProfile(new ViewModelToDomainMappingProfile());
+                x.AllowNullCollections = true;
+                x.AllowNullDestinationValues = true;
+            });
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 

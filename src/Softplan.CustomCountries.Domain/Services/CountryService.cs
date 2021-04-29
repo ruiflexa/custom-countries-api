@@ -1,6 +1,8 @@
-﻿using Softplan.CustomCountries.Domain.Entities;
+﻿using AutoMapper;
+using Softplan.CustomCountries.Domain.Entities;
 using Softplan.CustomCountries.Domain.Interfaces.Repository;
 using Softplan.CustomCountries.Domain.Interfaces.Services;
+using Softplan.CustomCountries.Domain.ViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,15 +11,18 @@ namespace Softplan.CustomCountries.Domain.Services
     public class CountryService : ICountryService
     {
         private readonly ICountryRepository _countryRepository;
+        private readonly IMapper _mapper;
 
-        public CountryService(ICountryRepository countryRepository)
+        public CountryService(ICountryRepository countryRepository, IMapper mapper)
         {
             _countryRepository = countryRepository;
+            _mapper = mapper;
         }
 
-        public async Task<bool> AddCountry(Country country)
+        public async Task<bool> AddCountry(CountryViewModel country)
         {
-            return await _countryRepository.AddCountry(country);
+            
+            return await _countryRepository.AddCountry(_mapper.Map<Country>(country));
         }
 
         public async Task<Country> GetById(string id)
@@ -35,9 +40,9 @@ namespace Softplan.CustomCountries.Domain.Services
             return await _countryRepository.GetCountriesAsync(name);
         }
 
-        public async Task<bool> UpdateCountry(Country country)
+        public async Task<bool> UpdateCountry(CountryViewModel country)
         {
-            return await _countryRepository.UpdateCountry(country);
+            return await _countryRepository.UpdateCountry(_mapper.Map<Country>(country));
         }
     }
 }

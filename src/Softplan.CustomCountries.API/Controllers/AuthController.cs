@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Softplan.CustomCountries.API.ViewModel;
 using Softplan.CustomCountries.Domain.Interfaces.Services;
+using Softplan.CustomCountries.Domain.ViewModel;
 using System.Threading.Tasks;
 
 namespace Softplan.CustomCountries.API.Controllers

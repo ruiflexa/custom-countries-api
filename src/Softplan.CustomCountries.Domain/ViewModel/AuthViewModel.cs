@@ -1,4 +1,4 @@
-﻿namespace Softplan.CustomCountries.API.ViewModel
+﻿namespace Softplan.CustomCountries.Domain.ViewModel
 {
     public class AuthViewModel
     {

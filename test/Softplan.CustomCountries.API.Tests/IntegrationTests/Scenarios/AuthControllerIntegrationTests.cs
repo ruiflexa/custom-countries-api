@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json;
 using Softplan.CustomCountries.API.Tests.IntegrationTests.Fixture;
-using Softplan.CustomCountries.API.ViewModel;
+using Softplan.CustomCountries.Domain.ViewModel;
 using System.Net;
 using System.Net.Http;
 using System.Text;

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Softplan.CustomCountries.Domain.Entities;
 using Softplan.CustomCountries.Domain.Interfaces.Services;
+using Softplan.CustomCountries.Domain.ViewModel;
 using System.Threading.Tasks;
 
 namespace Softplan.CustomCountries.API.Controllers
@@ -45,7 +46,7 @@ namespace Softplan.CustomCountries.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCountry([FromBody] Country country)
+        public async Task<IActionResult> AddCountry([FromBody] CountryViewModel country)
         {
             if (await _countryService.AddCountry(country))
                 return Ok(country);
@@ -55,7 +56,7 @@ namespace Softplan.CustomCountries.API.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> UpdateCountry([FromBody] Country country, string id)
+        public async Task<IActionResult> UpdateCountry([FromBody] CountryViewModel country, string id)
         {
             if (await _countryService.UpdateCountry(country))
                 return Ok(id);
