@@ -5,13 +5,25 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softplan.CustomCountries.API", "Softplan.CustomCountries.API\Softplan.CustomCountries.API.csproj", "{91050DC2-CA5B-42D2-9F3E-678656C4DF13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.Domain", "Softplan.CustomCountries.Domain\Softplan.CustomCountries.Domain.csproj", "{89721AC6-F90C-4012-B1BA-4683D3C9F7B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softplan.CustomCountries.Domain", "Softplan.CustomCountries.Domain\Softplan.CustomCountries.Domain.csproj", "{89721AC6-F90C-4012-B1BA-4683D3C9F7B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.Infra.Data", "Softplan.CustomCountries.Infra.Data\Softplan.CustomCountries.Infra.Data.csproj", "{E8EADA11-215F-42BB-A779-8BFFAFA3B81E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softplan.CustomCountries.Infra.Data", "Softplan.CustomCountries.Infra.Data\Softplan.CustomCountries.Infra.Data.csproj", "{E8EADA11-215F-42BB-A779-8BFFAFA3B81E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.Infra.CrossCutting.IoC", "Softplan.CustomCountries.Infra.CrossCutting.IoC\Softplan.CustomCountries.Infra.CrossCutting.IoC.csproj", "{3CA00E51-C0AF-4051-8F64-91EC64F1B931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softplan.CustomCountries.Infra.CrossCutting.IoC", "Softplan.CustomCountries.Infra.CrossCutting.IoC\Softplan.CustomCountries.Infra.CrossCutting.IoC.csproj", "{3CA00E51-C0AF-4051-8F64-91EC64F1B931}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.API.Tests", "..\test\Softplan.CustomCountries.API.Tests\Softplan.CustomCountries.API.Tests.csproj", "{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Softplan.CustomCountries.API.Tests", "..\test\Softplan.CustomCountries.API.Tests\Softplan.CustomCountries.API.Tests.csproj", "{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{FF27A9C2-556E-4444-8C6E-21F623D062DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{04D96346-526D-4E75-8FDC-CE73DEDC8121}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{1B47CF3C-9323-4012-9BDE-1706D57CB7EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{0E198A63-8467-4FBB-91EB-EECAEF70AB11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{24558285-AD3E-48F7-84A2-C4EBEAB283DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EFD12E8F-AD88-4199-984B-B98BF23D652C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +54,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91050DC2-CA5B-42D2-9F3E-678656C4DF13} = {FF27A9C2-556E-4444-8C6E-21F623D062DF}
+		{89721AC6-F90C-4012-B1BA-4683D3C9F7B3} = {04D96346-526D-4E75-8FDC-CE73DEDC8121}
+		{E8EADA11-215F-42BB-A779-8BFFAFA3B81E} = {24558285-AD3E-48F7-84A2-C4EBEAB283DA}
+		{3CA00E51-C0AF-4051-8F64-91EC64F1B931} = {0E198A63-8467-4FBB-91EB-EECAEF70AB11}
+		{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669} = {EFD12E8F-AD88-4199-984B-B98BF23D652C}
+		{0E198A63-8467-4FBB-91EB-EECAEF70AB11} = {1B47CF3C-9323-4012-9BDE-1706D57CB7EE}
+		{24558285-AD3E-48F7-84A2-C4EBEAB283DA} = {1B47CF3C-9323-4012-9BDE-1706D57CB7EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C8F20F3-F6C4-47E7-AB24-68DF4FF3F3DC}
