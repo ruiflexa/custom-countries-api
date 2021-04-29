@@ -22,7 +22,7 @@ namespace Softplan.CustomCountries.Infra.CrossCutting.IoC
         public static void RegisterDI(IServiceCollection services, IConfiguration configuration)
         {
             var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "datastore.json");
-            services.AddSingleton<IDataStore>(new DataStore(jsonFilePath, keyProperty: "_id"));
+            services.AddSingleton<IDataStore>(new DataStore(jsonFilePath, keyProperty: "_id", reloadBeforeGetCollection: true));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IGraphQLClient>(g => new GraphQLHttpClient(configuration["GraphCountries:BaseUrl"], new NewtonsoftJsonSerializer()));
             services.AddScoped<ICountryService, CountryService>();

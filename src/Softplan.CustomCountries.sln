@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.Infra.CrossCutting.IoC", "Softplan.CustomCountries.Infra.CrossCutting.IoC\Softplan.CustomCountries.Infra.CrossCutting.IoC.csproj", "{3CA00E51-C0AF-4051-8F64-91EC64F1B931}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Softplan.CustomCountries.API.Tests", "..\test\Softplan.CustomCountries.API.Tests\Softplan.CustomCountries.API.Tests.csproj", "{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3CA00E51-C0AF-4051-8F64-91EC64F1B931}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CA00E51-C0AF-4051-8F64-91EC64F1B931}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CA00E51-C0AF-4051-8F64-91EC64F1B931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F6BF87-D2F5-43F8-A7B2-4AC9B0531669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

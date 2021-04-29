@@ -10,5 +10,6 @@ namespace Softplan.CustomCountries.Domain.Interfaces.Services
         Task<bool> AddCountry(Country country);
         Task<bool> UpdateCountry(Country country);
         Task<Country> GetById(string id);
+        Country GetByCustomCountryId(long id);
     }
 }

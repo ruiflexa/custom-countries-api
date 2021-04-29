@@ -26,10 +26,11 @@ namespace Softplan.CustomCountries.API.Handlers
         {
             _userService = userService;
         }
+
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             var endpoint = Context.GetEndpoint();
-            if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() != null)
+            if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() != null || Request.Path.Value.Contains("login"))
                 return AuthenticateResult.NoResult();
 
             if (!Request.Headers.ContainsKey("Authorization"))
@@ -63,6 +64,12 @@ namespace Softplan.CustomCountries.API.Handlers
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
             return AuthenticateResult.Success(ticket);
+        }
+
+        protected override Task HandleChallengeAsync(AuthenticationProperties properties)
+        {
+            Response.Headers.Add("WWW-Authenticate", "Basic");
+            return base.HandleChallengeAsync(properties);
         }
     }
 }

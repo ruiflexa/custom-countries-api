@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Softplan.CustomCountries.API.Controllers
 {
     [ApiController]
-    [Route("countries")]
+    [Route("api/countries")]
     public class CountriesController : ControllerBase
     {
         private readonly ICountryService _countryService;
@@ -23,10 +23,18 @@ namespace Softplan.CustomCountries.API.Controllers
         }
 
         [HttpGet]
-        [Route("/countries/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
             var country = await _countryService.GetById(id);
+            return Ok(country);
+        }
+
+        [HttpGet]
+        [Route("custom/{id}")]
+        public IActionResult GetByCustomCountryId(long id)
+        {
+            var country =  _countryService.GetByCustomCountryId(id);
             return Ok(country);
         }
 
@@ -40,10 +48,11 @@ namespace Softplan.CustomCountries.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCountry([FromBody] Country country)
+        [Route("{id}")]
+        public async Task<IActionResult> UpdateCountry([FromBody] Country country, string id)
         {
             if (await _countryService.UpdateCountry(country))
-                return Ok(country.Id);
+                return Ok(id);
 
             return BadRequest("Ocorreu um ero ao tentar alterar um país");
         }

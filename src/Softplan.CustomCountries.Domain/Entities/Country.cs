@@ -15,11 +15,11 @@
     public partial class Country
     {
         [JsonProperty("_id")]
-        [JsonConverter(typeof(ParseStringConverter))]
-        public long Id { get; set; }
+        //[JsonConverter(typeof(ParseStringConverter))]
+        public string Id { get; set; }
 
         [JsonProperty("area")]
-        public double? Area { get; set; }
+        public long? Area { get; set; }
 
         [JsonProperty("capital")]
         public string Capital { get; set; }
@@ -32,12 +32,18 @@
 
         [JsonProperty("population")]
         public long Population { get; set; }
+        
+        [JsonProperty("populationDensity")]
+        public decimal? PopulationDensity { get; set; }
 
         [JsonProperty("flag")]
         public Flag Flag { get; set; }
 
         [JsonProperty("topLevelDomains")]
         public List<TopLevelDomain> TopLevelDomains { get; set; }
+        
+        [JsonProperty("isCustomInformation")]
+        public bool IsCustomInformation { get; set; }
     }
 
     public partial class Flag

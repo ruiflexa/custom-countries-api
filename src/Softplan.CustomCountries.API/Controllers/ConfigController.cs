@@ -5,7 +5,7 @@ namespace Softplan.CustomCountries.API.Controllers
 {
     [AllowAnonymous]
     [ApiController]
-    [Route("config")]
+    [Route("api/config")]
     public class ConfigController : ControllerBase
     {
         private const string GITHUB_ACESSO = "https://github.com/ruiflexa/custom-countries-api";

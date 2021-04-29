@@ -37,7 +37,7 @@ namespace Softplan.CustomCountries.API
 
             services.AddAuthentication("BasicAuthentication")
                  .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
-
+            services.AddCors();
             services.AddControllers();
         }
 

@@ -25,6 +25,11 @@ namespace Softplan.CustomCountries.Domain.Services
             return await _countryRepository.GetByIdAsync(id);
         }
 
+        public Country GetByCustomCountryId(long id)
+        {
+            return _countryRepository.GetByCustomCountryId(id);
+        }
+
         public async Task<List<Country>> GetCountries(string name)
         {
             return await _countryRepository.GetCountriesAsync(name);

@@ -10,10 +10,16 @@ namespace Softplan.CustomCountries.Domain.Services
     public class UserService : IUserService
     {
 
-        private readonly List<User> _users = new List<User>
+        private readonly List<User> _users;
+
+
+        public UserService()
         {
-            new User { Id = 1, UserName = "test", Password = "test" }
-        };
+            _users = new List<User>()
+            {
+                new User { Id = 1, UserName = "test", Password = "test" }
+            };
+        } 
 
         public async Task<User> Authenticate(string username, string password)
         {

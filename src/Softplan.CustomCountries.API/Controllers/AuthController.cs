@@ -5,10 +5,9 @@ using Softplan.CustomCountries.Domain.Interfaces.Services;
 using System.Threading.Tasks;
 
 namespace Softplan.CustomCountries.API.Controllers
-{
-    [Authorize]
+{    
     [ApiController]
-    [Route("auth")]
+    [Route("api/auth")]
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
