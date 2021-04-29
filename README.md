@@ -20,8 +20,8 @@ Dockerfile - Arquivo para preparar a imagem caso queira subir a API em Docker
 Seguir orientações contidas no repositório da API Graph Countries (https://github.com/lennertVanSever/graphcountries) para rodar a API localmente
 
 Criar variáveis de ambiente para o GraphQL (Url de acesso, usuário e senha)
-"GRAPHCOUNTRIES_USERNAME": "neo4j",
-"GRAPHCOUNTRIES_BASEURL": "http://localhost:8080",
-"GRAPHCOUNTRIES_PASSWORD": '*******'
+- "GRAPHCOUNTRIES_USERNAME": "neo4j",
+- "GRAPHCOUNTRIES_BASEURL": "http://localhost:8080",
+- "GRAPHCOUNTRIES_PASSWORD": '*******'
 
 Realizar o Restore Nuget Packages e subir a aplicação
