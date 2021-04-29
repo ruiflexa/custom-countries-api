@@ -6,9 +6,7 @@
         public string AllowedHosts { get; set; }
         public string SoftplanUrl { get; set; }
         public Graphcountries GraphCountries { get; set; }
-        public Jsondb JsonDb { get; set; }
         public Swaggeroptions SwaggerOptions { get; set; }
-        public string Secret { get; set; }
     }
 
     public class Logging
@@ -28,11 +26,6 @@
         public string BaseUrl { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-    }
-
-    public class Jsondb
-    {
-        public string BaseUrl { get; set; }
     }
 
     public class Swaggeroptions

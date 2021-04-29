@@ -24,7 +24,7 @@ namespace Softplan.CustomCountries.Infra.CrossCutting.IoC
             var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "datastore.json");
             services.AddSingleton<IDataStore>(new DataStore(jsonFilePath, keyProperty: "_id", reloadBeforeGetCollection: true));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IGraphQLClient>(g => new GraphQLHttpClient(configuration["GraphCountries:BaseUrl"], new NewtonsoftJsonSerializer()));
+            services.AddScoped<IGraphQLClient>(g => new GraphQLHttpClient(Environment.GetEnvironmentVariable("GRAPHCOUNTRIES_BASEURL"), new NewtonsoftJsonSerializer()));
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryRepository, CountryRepository>();
@@ -34,13 +34,9 @@ namespace Softplan.CustomCountries.Infra.CrossCutting.IoC
                 options.SoftplanUrl = configuration.GetSection("SoftplanUrl").Value;
                 options.GraphCountries = new Graphcountries()
                 {
-                    BaseUrl = configuration.GetSection("GraphCountries:BaseUrl").Value,
-                    UserName = configuration.GetSection("GraphCountries:UserName").Value,
-                    Password = configuration.GetSection("GraphCountries:Password").Value
-                };
-                options.JsonDb = new Jsondb()
-                {
-                    BaseUrl = configuration.GetSection("JsonDb:BaseUrl").Value
+                    BaseUrl = Environment.GetEnvironmentVariable("GRAPHCOUNTRIES_BASEURL"),  // configuration.GetSection("GraphCountries:BaseUrl").Value,
+                    UserName = Environment.GetEnvironmentVariable("GRAPHCOUNTRIES_USERNAME"), // configuration.GetSection("GraphCountries:UserName").Value,
+                    Password = Environment.GetEnvironmentVariable("GRAPHCOUNTRIES_PASSWORD") // configuration.GetSection("GraphCountries:Password").Value
                 };
             });
         }
